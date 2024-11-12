@@ -9,7 +9,7 @@ import java.util.List;
 
 @AllArgsConstructor
 @Service
-public class FaqQuestionsService {
+public class FaqQuestionService {
 
     private final FaqQuestionRepository faqQuestionRepository;
 
@@ -19,5 +19,13 @@ public class FaqQuestionsService {
 
     public List<FaqQuestion> getAllFaqQuestions() {
         return faqQuestionRepository.findAll();
+    }
+
+    public FaqQuestion getFaqQuestionById(Long id) {
+        return faqQuestionRepository.findById(id).orElse(null);
+    }
+
+    public void deleteFaqQuestionById(Long id) {
+        faqQuestionRepository.deleteById(id);
     }
 }
