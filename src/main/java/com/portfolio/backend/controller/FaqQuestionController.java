@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @CrossOrigin("*")
 @AllArgsConstructor
 @RestController
@@ -19,6 +21,12 @@ public class FaqQuestionController {
     public ResponseEntity<FaqQuestion> createFaqQuestion(@RequestBody FaqQuestion faqQuestion) {
         FaqQuestion question = faqQuestionsService.createFaqQuestion(faqQuestion);
         return new ResponseEntity<>(question, HttpStatus.CREATED);
+    }
+
+    @GetMapping
+    public ResponseEntity<List<FaqQuestion>> getAllFaqQuestions() {
+        List<FaqQuestion> questions = faqQuestionsService.getAllFaqQuestions();
+        return ResponseEntity.ok(questions);
     }
 
 
