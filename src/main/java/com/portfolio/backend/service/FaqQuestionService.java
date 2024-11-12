@@ -28,4 +28,10 @@ public class FaqQuestionService {
     public void deleteFaqQuestionById(Long id) {
         faqQuestionRepository.deleteById(id);
     }
+
+    public FaqQuestion updateFaqQuestion(FaqQuestion updatedFaqQuestion, Long id) {
+        FaqQuestion existingFaqQuestion = faqQuestionRepository.findById(id).orElse(null);
+        existingFaqQuestion.setQuestion(updatedFaqQuestion.getQuestion());
+        return faqQuestionRepository.save(existingFaqQuestion);
+    }
 }

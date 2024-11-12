@@ -41,5 +41,10 @@ public class FaqQuestionController {
         return ResponseEntity.ok("Deleted faq question");
     }
 
+    @PutMapping("{id}")
+    public ResponseEntity<FaqQuestion> updateFaqQuestion(@RequestBody FaqQuestion faqQuestion, @PathVariable Long id) {
+        FaqQuestion question = faqQuestionService.updateFaqQuestion(faqQuestion, id);
+        return ResponseEntity.ok(question);
+    }
 
 }
